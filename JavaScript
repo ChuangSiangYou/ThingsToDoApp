@@ -1,0 +1,25 @@
+// Selecting elements
+const newTodoItem = document.querySelector('#new-todo-item');
+const addTodoItem = document.querySelector('#add-todo-item');
+const todoList = document.querySelector('#todo-list');
+
+// Creating a new to-do item
+function createTodoItem(todoText) {
+  const li = document.createElement('li');
+  li.innerText = todoText;
+  return li;
+}
+
+// Adding a new to-do item to the list
+function addTodoItemToList(event) {
+  event.preventDefault();
+  const newTodoText = newTodoItem.value.trim();
+  if (newTodoText !== '') {
+    const li = createTodoItem(newTodoText);
+    todoList.appendChild(li);
+    newTodoItem.value = '';
+  }
+}
+
+// Event listener for adding a new to-do item
+addTodoItem.addEventListener('click', addTodoItemToList);
